@@ -25,6 +25,9 @@ jobs:
       
     - name: Build with dotnet
       run: dotnet build --configuration Release
+
+    - name: Login to Azure
+      run: az login --service-principal --username ${{ secrets.SERVICE_PRINCIPAL }} --password ${{ secrets.SERVICE_PRINCIPAL_PASSWORD }} --tenant ${{ secrets.TENANT }}
       
     - name: Build and Push Image
       run: |
